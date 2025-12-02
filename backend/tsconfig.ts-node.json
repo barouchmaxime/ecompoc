@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2022", 
+    "allowImportingTsExtensions": true,   // allows ts-node to import .ts files directly
+    "sourceMap": true,
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
+  },
+  "include": ["**/*.ts"]
+}

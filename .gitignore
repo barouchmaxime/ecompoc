@@ -1,0 +1,58 @@
+# --- Node modules ---
+node_modules/
+*/node_modules/
+
+# --- Logs ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# --- Environment files ---
+.env
+.env.*
+*/.env
+*/.env.*
+
+# --- Build outputs ---
+dist/
+build/
+*/dist/
+*/build/
+
+# --- Vite ---
+.vite/
+*/.vite/
+vite.config.ts.timestamp*
+
+# --- TypeScript ---
+*.tsbuildinfo
+*/tsconfig.tsbuildinfo
+
+# --- IDE / OS ---
+.DS_Store
+Thumbs.db
+
+# --- VSCode ---
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# --- Cache / Temp ---
+.tmp/
+temp/
+tmp/
+.cache/
+*/.cache/
+coverage/
+
+# --- Backend specific ---
+backend/dist/
+backend/build/
+
+# --- Client specific ---
+client/dist/
+client/node_modules/
+client/.vite/
