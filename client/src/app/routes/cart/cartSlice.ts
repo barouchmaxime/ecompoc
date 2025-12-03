@@ -82,6 +82,13 @@ export const cartSlice = createSlice({
         quantityById: deleteFromQuantityById(state.quantityById, action.payload)
       }
     }),
+    resetCart: create.reducer(
+      () => {
+        return {
+          ...initialState,
+        }
+      }
+    ),
   }),
   // You can define your selectors here. These selectors receive the slice
   // state as their first argument.
@@ -104,7 +111,7 @@ export const cartSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function.
-export const { addToCart, decrementToCart, deleteToCart } = cartSlice.actions
+export const { addToCart, decrementToCart, deleteToCart, resetCart } = cartSlice.actions
 
 // Selectors returned by `slice.selectors` take the root state as their first argument.
 export const { selectAddedIds, selectQuantityById, selectProductCount } = cartSlice.selectors

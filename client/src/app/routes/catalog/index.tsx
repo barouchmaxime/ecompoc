@@ -11,18 +11,9 @@ import { SearchInput } from "../../components/card/components/filters/search";
 import { CardHeader } from "../../components/card/CardHeader";
 
 export const Catalog = () => {
-    // const data = useLoaderData();
-    // const [filteredData, setFilteredData] = useState<Product[]>([])
-    // const [searchText, setSearchText] = useState("")
-
     const searchText: string = useSelector(selectSearchText);
     console.log(searchText)
     const { data, isError, isLoading, isSuccess } = useGetProductsQuery()
-    /* const handleChange = useCallback(
-        (text:string)=>{
-            setSearchText(text);
-        }
-    ,[]) */
     const filteredData = useMemo(()=>{
         if(!(Array.isArray(data) && data.length > 0))
             return [];
@@ -44,11 +35,9 @@ export const Catalog = () => {
             <div>Error { JSON.stringify(data || {Message: "internal error"}) }</div>
         )
     }
-    // const SearchInputMemo = memo(SearchInput, () => true); //true or false not good
     const filterComps = [
         <SearchInput
             key={1}
-            //onChange={handleChange}
             placeholder="Search item"
         />
     ];
@@ -85,14 +74,5 @@ export const Catalog = () => {
         </CardContainer>
     )
 }
-  
-/* const loader = async () => {
-    const res = await fetch(`http://api.dropit.mock/products`,{
-        headers: {
-            "Content-Type": "application/json",
-        }
-    });
-    return res.json();
-  } */
 
 export const catalogRoute = { element: <Catalog />, /* loader, */ errorElement: <RootBoundary /> };

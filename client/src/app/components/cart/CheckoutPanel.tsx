@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { resetCart } from "../../routes/cart/cartSlice";
 interface ICheckoutPanel {
     title?: string;
     subTotalLabel?: string;
@@ -24,8 +26,9 @@ export const CheckoutPanel = ({
     quantityById,
 } : ICheckoutPanel) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const handleCheckout = () => {
-        const body: { items: { title: string; quantity: number }[] } = {
+        const body: { items: { productId: number; quantity: number }[] } = {
             items: [],
         };
 
@@ -37,7 +40,7 @@ export const CheckoutPanel = ({
         }
 
         if (body.items.length === 0) {
-            alert("Votre panier est vide.");
+            alert("Your Cart is empty.");
             return;
         }
 
@@ -50,11 +53,12 @@ export const CheckoutPanel = ({
             .join("\n");
 
         const message =
-            `🛒 Votre commande :\n\n` +
+            `🛒 Your order :\n\n` +
             `${itemLines}\n\n` +
-            `Appuyez sur OK pour revenir aux produits.`;
+            `Click OK to come back to product.`;
 
         alert(message);
+        dispatch(resetCart())
         navigate("/");
     };
     return (
